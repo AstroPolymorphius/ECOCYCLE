@@ -27,12 +27,14 @@ public class Product {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         this.name = name;
     }
+
     public void removeStage(LifeCycleStage stage) {
         if (stage == null) {
             throw new IllegalArgumentException("Stage cannot be null");
@@ -43,6 +45,4 @@ public class Product {
         stages.remove(stage);
     }
 
-
-   
 }
