@@ -23,6 +23,8 @@ public class LCA_GUI{
 
         //The top section: for collecting the data about the product itself
         JPanel topPanel = new JPanel(new FlowLayout());
+        topPanel.add(new JLabel("Product name:"));
+        productNameField = new JTextField(20);
         topPanel.add(productNameField);
 
         //The button for creating the button
@@ -76,7 +78,7 @@ public class LCA_GUI{
             String stageName = JOptionPane.showInputDialog(frame, "Enter Stage Name:");
             if (stageName != null && !stageName.trim().isEmpty()) {
                 // For now, we only add RawMaterialStage; can add options for other stage types
-                RawMaterialStage stage = new RawMaterialStage(stageName.trim());
+                RawMaterialStage stage = new RawMaterialStage();
                 try {
                     product.addStage(stage);
                     stageListModel.addElement(stage.getStageName());

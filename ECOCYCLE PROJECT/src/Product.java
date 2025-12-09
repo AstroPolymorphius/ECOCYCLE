@@ -22,7 +22,7 @@ public class Product {
     public double calculateTotalImpact() {
         double totalImpact = 0;
         for (LifeCycleStage stage : stages) {
-            totalImpact += stage.getImpact();
+            totalImpact += stage.getImpactValue();
         }
         return totalImpact;
     }

@@ -59,7 +59,7 @@ public class ManufacturingStage extends LifeCycleStage{
     }
     public Map<Machine, Double> getMachinesUsed() {
         return Collections.unmodifiableMap(this.machinesUsed);
-
+    }
 
     
     
