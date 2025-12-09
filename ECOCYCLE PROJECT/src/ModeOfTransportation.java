@@ -59,7 +59,7 @@ public class ModeOfTransportation {
     }
 
     public void setDistanceCovered(double distanceCovered){
-        if (distanceCovered < 0){
+        if (distanceCovered <= 0){
             throw new IllegalArgumentException("Distance covered cannot be negative or 0");
         }
         else{
