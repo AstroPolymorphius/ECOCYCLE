@@ -16,7 +16,7 @@ public class LifeCycleStage {
         return stageName;
     }
 
-    public double getImpactValue(double impactValue) {
+    public double getStageImpactValue() {
         return impactValue;
     }
 

@@ -1,5 +1,7 @@
-public class DisposalMethod {
+public class DisposalMethod extends DisposalStage{
+    // stores name of disposal method e.g landfill
     private String name;
+    // stores emission factor of disposal method
     private double emissionFactor;
 
     public DisposalMethod(String name, double emissionFactor) {
@@ -28,6 +30,18 @@ public class DisposalMethod {
         }
 
         this.emissionFactor = emissionFactor;
+    }
+    @Override
+    public String toString() {
+        return "Disposal Method Name: " + name +
+               ", Emission Factor: " + emissionFactor;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DisposalMethod that = (DisposalMethod) obj;
+        return name.equals(that.name);
     }
 
 }
