@@ -1,11 +1,15 @@
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Collections;
 
-public class DisposalStage {
+public class DisposalStage extends LifeCycleStage{
     // stores different methods of disposal and the weights of waste disposed
-    private HashMap<DisposalMethod, Double> disposalMethods;
-
+    private final Map<DisposalMethod, Double> disposalMethods;
+    // the double is for the weight of waste disposed
+    
     public DisposalStage() {
+        super("Disposal Stage");
         this.disposalMethods = new HashMap<>();
     }
 
@@ -35,18 +39,16 @@ public class DisposalStage {
         this.disposalMethods.remove(method);
     }
 
-    public HashMap<DisposalMethod, Double> getDisposalMethods() {
-        return new HashMap<>(this.disposalMethods);
+    public Map<DisposalMethod, Double> getDisposalMethods() {
+        return Collections.unmodifiableMap(this.disposalMethods);
     }
 
     public double getMethodWeight(DisposalMethod method) {
         if (method == null) {
             throw new IllegalArgumentException("Method cannot be null");
         }
-        if (!this.disposalMethods.containsKey(method)) {
-            throw new IllegalArgumentException("Method not found");
-        }
-        return disposalMethods.get(method);
+        
+        return this.disposalMethods.getOrDefault(method, 0.0);
     }
     public void setMethodWeight(DisposalMethod method, double weight) {
         if (method == null || weight < 0) {
@@ -57,16 +59,12 @@ public class DisposalStage {
     public void clearMethods() {
         this.disposalMethods.clear();
     }
-    
-    public double getStageImpactValue() {
+    @Override
+    public double getImpactValue() {
         double totalImpact = 0;
-        for (DisposalMethod method : this.disposalMethods.keySet()) {
-            totalImpact += this.disposalMethods.get(method) * method.getEmissionFactor();
+        for (Map.Entry<DisposalMethod, Double> entry : this.disposalMethods.entrySet()) {
+            totalImpact += entry.getValue() * entry.getKey().getEmissionFactor();
         }
         return totalImpact;
-    }
-    @Override
-    public String toString() {
-        return "Disposal Stage: " + this.disposalMethods;
     }
 }
