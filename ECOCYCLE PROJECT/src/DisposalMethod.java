@@ -1,71 +1,51 @@
+public class DisposalMethod extends DisposalStage{
+    // stores name of disposal method e.g landfill
+    private String name;
+    // stores emission factor of disposal method
+    private double emissionFactor;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Collections;
-public class RawMaterialStage extends LifeCycleStage{
-    private Map<Material, Double> materials;
-
-
-//CONSTRUCTORS
-    public RawMaterialStage(){
-        super("Raw Material Stage");
-        this.materials = new HashMap<>();
+    public DisposalMethod(String name, double emissionFactor) {
+        this.setName(name);
+        this.setEmissionFactor(emissionFactor);
     }
 
-//Getters and Setters
-    public double getMaterialImpact(Material material) {
-        if (material == null) {
-            throw new IllegalArgumentException("Material cannot be null");
-        }
-        if (!this.materials.containsKey(material)) {
-            throw new IllegalArgumentException("Material not found");
-        }
-        return this.materials.get(material) * material.getImpactValue();
-    }
-    public void addMaterial(Material material, double quantity) {
-        if (material == null || quantity < 0) {
-            throw new IllegalArgumentException("Material cannot be null or quantity cannot be negative");
-        }
-        this.materials.put(material, quantity);
-    }
-    public void removeMaterial(Material material) {
-        if (material == null) {
-            throw new IllegalArgumentException("Material cannot be null");
-        }
-        if (!this.materials.containsKey(material)) {
-            throw new IllegalArgumentException("Material not found");
-        }
-        this.materials.remove(material);
+    public double getEmissionFactor() {
+        return emissionFactor;
     }
 
-
-    public Map<Material, Double> getMaterials() {
-        return Collections.unmodifiableMap(materials);
+    public String getName() {
+        return name;
     }
 
-    public void clearMaterials() {
-        this.materials.clear();
-    }
-    public double getMaterialWeight(Material material) {
-        if (material == null) {
-            throw new IllegalArgumentException("Material cannot be null");
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
         }
-        return this.materials.getOrDefault(material, 0.0);
+        this.name = name;
     }
-    public void setMaterialWeight(Material material, double weight) {
-        if (material == null || weight < 0) {
-            throw new IllegalArgumentException("Material cannot be null or weight cannot be negative");
-        }
-        this.materials.put(material, weight);
-    }
-    public double getImpactValue() {
-        double totalImpact = 0;
-        for (Map.Entry<Material, Double> entry : this.materials.entrySet()) {
-            totalImpact += entry.getValue() * entry.getKey().getImpactValue();
-        }
-        return totalImpact;
-    }
-    
 
+    public void setEmissionFactor(double emissionFactor) {
+        if (emissionFactor < 0) {
+            throw new IllegalArgumentException("Emission factor cannot be negative");
+        }
+
+        this.emissionFactor = emissionFactor;
+    }
+    @Override
+    public String toString() {
+        return "Disposal Method Name: " + name +
+               ", Emission Factor: " + emissionFactor;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DisposalMethod that = (DisposalMethod) obj;
+        return name.equals(that.name);
+    }
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 
 }
