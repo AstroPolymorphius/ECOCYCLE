@@ -2,15 +2,17 @@ public class Material {
     //Encapsulated data fields
     private String name;
     private double emissionFactor;
+    private double quantity;
 
 
 
 
 
     //Parameterized constructor using the material's name and emission factor
-    public Material(String name, double emissionFactor) {
+    public Material(String name, double emissionFactor, double quantity) {
         this.name = name;
         this.emissionFactor = emissionFactor;
+        this.quantity = quantity;
     }
 
 
@@ -22,6 +24,9 @@ public class Material {
 
     public double getEmissionFactor() {
         return emissionFactor;
+    }
+    public double getQuantity() {
+        return quantity;
     }
 
 
@@ -44,6 +49,15 @@ public class Material {
         }
         else{
             this.emissionFactor = emissionFactor;
+        }
+    }
+    public void setQuantity(double quantity) {
+        //Error handling
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative or zero");
+        }
+        else{
+            this.quantity = quantity;
         }
     }
 }
