@@ -9,8 +9,8 @@ public class Material {
 
     //Parameterized constructor using the material's name and emission factor
     public Material(String name, double emissionFactor) {
-        this.name = name;
-        this.emissionFactor = emissionFactor;
+        this.setName(name);
+        this.setEmissionFactor(emissionFactor);
     }
 
 
@@ -30,20 +30,32 @@ public class Material {
         //Error handling
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be empty or blank");
+        
         }
-        else{
-            this.name = name;
-        }
-            
+        this.name = name;
     }
 
     public void setEmissionFactor(double emissionFactor) {
         //Error handling
-        if (emissionFactor <= 0) {
+        if (emissionFactor < 0) {
             throw new IllegalArgumentException("Emission factor cannot be negative or zero");
         }
-        else{
-            this.emissionFactor = emissionFactor;
-        }
+        this.emissionFactor = emissionFactor;
+    }
+    @Override
+    public String toString() {
+        return "Material Name: " + name +
+               ", Emission Factor: " + emissionFactor;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Material that = (Material) obj;
+        return name.equals(that.name);
+    }
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }
