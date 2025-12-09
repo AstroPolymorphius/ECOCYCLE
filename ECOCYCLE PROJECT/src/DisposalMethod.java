@@ -5,8 +5,8 @@ public class DisposalMethod extends DisposalStage{
     private double emissionFactor;
 
     public DisposalMethod(String name, double emissionFactor) {
-        this.name = name;
-        this.emissionFactor = emissionFactor;
+        this.setName(name);
+        this.setEmissionFactor(emissionFactor);
     }
 
     public double getEmissionFactor() {
@@ -42,6 +42,10 @@ public class DisposalMethod extends DisposalStage{
         if (obj == null || getClass() != obj.getClass()) return false;
         DisposalMethod that = (DisposalMethod) obj;
         return name.equals(that.name);
+    }
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 
 }
