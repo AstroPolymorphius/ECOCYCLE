@@ -48,4 +48,18 @@ public class Product {
         stages.remove(stage);
     }
 
+    public LifeCycleStage getStageByName(String stageName) {
+    if (stageName == null || stageName.trim().isEmpty()) {
+        return null;
+    }
+
+    for (LifeCycleStage stage : stages) {
+        if (stage.getStageName().equalsIgnoreCase(stageName.trim())) {
+            return stage;
+        }
+    }
+
+    return null; // stage not found
+}
+
 }

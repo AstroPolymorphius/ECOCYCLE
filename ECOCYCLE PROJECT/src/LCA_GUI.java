@@ -27,7 +27,7 @@ public class LCA_GUI{
 
         //The button for creating the button
         JButton createProductButton = new JButton("Create Product");
-        topPanel.add(createProductButton)
+        topPanel.add(createProductButton);
         frame.add(topPanel, BorderLayout.NORTH);
 
         //Centre Panel: Stage List
