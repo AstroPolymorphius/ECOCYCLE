@@ -13,6 +13,9 @@ public class Product {
         if (stage == null) {
             throw new IllegalArgumentException("Stage cannot be null");
         }
+        if (stages.contains(stage)){
+            throw new IllegalArgumentException("Stage already exists");
+        }
         stages.add(stage);
     }
 
