@@ -11,10 +11,10 @@ public class TransportationStage extends LifeCycleStage {
         super(Transportation);
         this.mode = mode;
         this.distance = distance;
+    }    
 
         @ Override
-        public double getImpact() {
-            return mode.getEmissionRate() * distance;
-
+    public double getImpact() {
+        return mode.getEmissionRate() * distance;
     }
 }
