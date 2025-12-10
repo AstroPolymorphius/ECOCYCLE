@@ -59,6 +59,14 @@ public class ManufacturingStage extends LifeCycleStage{
     }
     public Map<Machine, Double> getMachinesUsed() {
         return Collections.unmodifiableMap(this.machinesUsed);
+<<<<<<< HEAD
+=======
+
+
+    
+    
+
+>>>>>>> b6826631da9cbfabe38fdfaa32d27e07e43df4d1
 
 
     
