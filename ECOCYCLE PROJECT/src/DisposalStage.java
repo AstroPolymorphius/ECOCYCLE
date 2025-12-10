@@ -1,7 +1,7 @@
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Collections;
 
 public class DisposalStage extends LifeCycleStage{
     // stores different methods of disposal and the weights of waste disposed

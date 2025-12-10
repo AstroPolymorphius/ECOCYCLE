@@ -1,10 +1,11 @@
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Collections;
 
 public class ManufacturingStage extends LifeCycleStage{
     private final Map<Machine, Double> machinesUsed;
+    private double gridEmissionFactor = 0.4; // default value in kg CO2e per kWh
 
 //Constructors
     public ManufacturingStage(){
@@ -53,25 +54,12 @@ public class ManufacturingStage extends LifeCycleStage{
     public double getImpactValue() {
         double totalImpact = 0;
         for (Map.Entry<Machine, Double> entry : this.machinesUsed.entrySet()) {
-            totalImpact += entry.getValue() * entry.getKey().getEnergyConsumption();
+            totalImpact += entry.getValue() * entry.getKey().getEnergyConsumption()*gridEmissionFactor;
         }
         return totalImpact;
     }
     public Map<Machine, Double> getMachinesUsed() {
-        return Collections.unmodifiableMap(this.machinesUsed);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-
-    
-    
-
->>>>>>> b6826631da9cbfabe38fdfaa32d27e07e43df4d1
-
-=======
-    }
->>>>>>> d69bc8c939b571fe6ce022669ce2c4321b15ef9d
+        return Collections.unmodifiableMap(this.machinesUsed);}
 
     
     

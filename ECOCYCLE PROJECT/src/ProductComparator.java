@@ -16,10 +16,10 @@ public class ProductComparator implements Comparator<Product> {
 
         if (comparisonResult < 0) {
             return productA.getName() + " is more environmentally efficient than " +
-                   productB.getName() + " (Total Impact: " + productA.getTotalImpact() + " < " + productB.getTotalImpact() + ").";
+                   productB.getName() + " (Total Impact: " + productA.calculateTotalImpact() + " < " + productB.calculateTotalImpact() + ").";
         } else if (comparisonResult > 0) {
             return productB.getName() + " is more environmentally efficient than " +
-                   productA.getName() + " (Total Impact: " + productB.getTotalImpact() + " < " + productA.getTotalImpact() + ").";
+                   productA.getName() + " (Total Impact: " + productB.calculateTotalImpact() + " < " + productA.calculateTotalImpact() + ").";
         } else {
             return productA.getName() + " and " + productB.getName() + " have the same environmental impact.";
         }
