@@ -20,7 +20,7 @@ public class RawMaterialStage extends LifeCycleStage{
         if (!this.materials.containsKey(material)) {
             throw new IllegalArgumentException("Material not found");
         }
-        return this.materials.get(material) * material.getImpactValue();
+        return this.materials.get(material) * material.getEmissionFactor();
     }
     public void addMaterial(Material material, double quantity) {
         if (material == null || quantity < 0) {
@@ -61,7 +61,7 @@ public class RawMaterialStage extends LifeCycleStage{
     public double getImpactValue() {
         double totalImpact = 0;
         for (Map.Entry<Material, Double> entry : this.materials.entrySet()) {
-            totalImpact += entry.getValue() * entry.getKey().getImpactValue();
+            totalImpact += entry.getValue() * entry.getKey().getEmissionFactor();
         }
         return totalImpact;
     }

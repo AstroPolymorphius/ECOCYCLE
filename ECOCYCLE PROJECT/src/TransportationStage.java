@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TransportationStage extends LifeCycleStage {
-    
-   
     private final Map<ModeOfTransportation, Double> modes;
     
     public TransportationStage() {
