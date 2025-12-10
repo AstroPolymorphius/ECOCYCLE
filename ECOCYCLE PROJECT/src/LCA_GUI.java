@@ -187,7 +187,7 @@ public class LCA_GUI {
             switch (type) {
                 case "Material":
                     if (!(stage instanceof RawMaterialStage rawStage)) { JOptionPane.showMessageDialog(frame, "Select a Raw Material Stage."); return; }
-                    factorLabel = "Impact Value:";
+                    factorLabel = "Emission Factor (CO2 per kg):";
                     quantityLabel = "Quantity (kg):";
                     inputs = new Object[]{"Material Name:", nameField, factorLabel, factorField, quantityLabel, quantityField};
                     
